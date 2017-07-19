@@ -1,0 +1,136 @@
+#--------------------------------------------------
+# Map Reduce Plan
+#--------------------------------------------------
+MapReduce node scope-4399
+Map Plan
+Union[tuple] - scope-4400
+|
+|---Z: Local Rearrange[tuple]{int}(false) - scope-4372
+|   |   |
+|   |   Project[int][0] - scope-4373
+|   |
+|   |---X: New For Each(false,false)[bag] - scope-4360
+|       |   |
+|       |   Project[int][0] - scope-4356
+|       |   |
+|       |   Project[chararray][2] - scope-4358
+|       |
+|       |---M: Filter[bag] - scope-4352
+|           |   |
+|           |   Equal To[boolean] - scope-4355
+|           |   |
+|           |   |---Project[chararray][4] - scope-4353
+|           |   |
+|           |   |---Constant(Y) - scope-4354
+|           |
+|           |---raw: New For Each(false,false,false,false,false,false,false)[bag] - scope-4420
+|               |   |
+|               |   Cast[int] - scope-4407
+|               |   |
+|               |   |---Project[bytearray][0] - scope-4406
+|               |   |
+|               |   Cast[chararray] - scope-4409
+|               |   |
+|               |   |---Project[bytearray][1] - scope-4408
+|               |   |
+|               |   Cast[chararray] - scope-4411
+|               |   |
+|               |   |---Project[bytearray][2] - scope-4410
+|               |   |
+|               |   Cast[chararray] - scope-4413
+|               |   |
+|               |   |---Project[bytearray][3] - scope-4412
+|               |   |
+|               |   Cast[chararray] - scope-4415
+|               |   |
+|               |   |---Project[bytearray][4] - scope-4414
+|               |   |
+|               |   Cast[int] - scope-4417
+|               |   |
+|               |   |---Project[bytearray][5] - scope-4416
+|               |   |
+|               |   Cast[int] - scope-4419
+|               |   |
+|               |   |---Project[bytearray][6] - scope-4418
+|               |
+|               |---raw: Load(/data2/emp.csv:PigStorage(',')) - scope-4405
+|
+|---Z: Local Rearrange[tuple]{int}(false) - scope-4374
+    |   |
+    |   Project[int][0] - scope-4375
+    |
+    |---Y: New For Each(false)[bag] - scope-4367
+        |   |
+        |   Project[int][5] - scope-4365
+        |
+        |---E: Filter[bag] - scope-4361
+            |   |
+            |   Equal To[boolean] - scope-4364
+            |   |
+            |   |---Project[chararray][4] - scope-4362
+            |   |
+            |   |---Constant(N) - scope-4363
+            |
+            |---raw: New For Each(false,false,false,false,false,false,false)[bag] - scope-4436
+                |   |
+                |   Cast[int] - scope-4423
+                |   |
+                |   |---Project[bytearray][0] - scope-4422
+                |   |
+                |   Cast[chararray] - scope-4425
+                |   |
+                |   |---Project[bytearray][1] - scope-4424
+                |   |
+                |   Cast[chararray] - scope-4427
+                |   |
+                |   |---Project[bytearray][2] - scope-4426
+                |   |
+                |   Cast[chararray] - scope-4429
+                |   |
+                |   |---Project[bytearray][3] - scope-4428
+                |   |
+                |   Cast[chararray] - scope-4431
+                |   |
+                |   |---Project[bytearray][4] - scope-4430
+                |   |
+                |   Cast[int] - scope-4433
+                |   |
+                |   |---Project[bytearray][5] - scope-4432
+                |   |
+                |   Cast[int] - scope-4435
+                |   |
+                |   |---Project[bytearray][6] - scope-4434
+                |
+                |---raw: Load(/data2/emp.csv:PigStorage(',')) - scope-4421--------
+Reduce Plan
+Store(hdfs://cs421-hd1.cs.mcgill.ca:9000/tmp/temp1149155778/tmp-2047051488:org.apache.pig.impl.io.InterStorage) - scope-4401
+|
+|---Z: Package(JoinPackager(true,true))[tuple]{int} - scope-4371--------
+Global sort: false
+----------------
+
+MapReduce node scope-4403
+Map Plan
+V: Local Rearrange[tuple]{int}(false) - scope-4381
+|   |
+|   Project[int][2] - scope-4382
+|
+|---Load(hdfs://cs421-hd1.cs.mcgill.ca:9000/tmp/temp1149155778/tmp-2047051488:org.apache.pig.impl.io.InterStorage) - scope-4402--------
+Reduce Plan
+W: Store(fakefile:org.apache.pig.builtin.PigStorage) - scope-4392
+|
+|---W: New For Each(false,true,false)[bag] - scope-4391
+    |   |
+    |   Project[int][0] - scope-4383
+    |   |
+    |   Project[bag][1] - scope-4386
+    |   |
+    |   |---Project[bag][1] - scope-4385
+    |   |
+    |   POUserFunc(org.apache.pig.builtin.COUNT)[long] - scope-4389
+    |   |
+    |   |---Project[bag][1] - scope-4388
+    |
+    |---V: Package(Packager)[tuple]{int} - scope-4380--------
+Global sort: false
+----------------

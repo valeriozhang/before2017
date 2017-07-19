@@ -1,0 +1,3 @@
+a) It was nested.
+
+b) The query took 3 minutes 17 seconds and 140 milliseconds total from start to finish. 

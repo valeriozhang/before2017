@@ -1,0 +1,25 @@
+1a)
+Valerios-MBP:Problem1 Valerio$ cat answer.txt
+cat: answer.txt: Permission denied
+I was not granted access to the answer.txt file because I wasn't give the
+Privilege to. Adding sudo gives admin privileges to accessing the file, via
+override.
+
+1b)
+Valerios-MBP:Problem1 Valerio$ sudo cat answer.txt
+Password:
+sudo: answer.txt: command not found
+Valerios-MBP:Problem1 Valerio$ sudo cat answer.txt
+This file contains a message with the answer to part 1. The message is:
+
+"Look what I learned in 206!"
+
+Congratulations if you read this.
+
+2a)
+Valerios-MBP:Problem1 Valerio$ ps l | head
+  UID   PID  PPID CPU PRI NI      VSZ    RSS WCHAN  STAT   TT       TIME COMMAND
+  501   614   613   0  31  0  2456924   1400 -      S    s000    0:00.06 -bash
+  501   887   614   0  31  0  2432752    544 -      S+   s000    0:00.00 head
+
+The ps command give the process report status. The "l" displays BSD long format. The "head" command displays the beginning of the piped data.
